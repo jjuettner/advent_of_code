@@ -19,7 +19,7 @@ for line in input:
       last_digit = c
       break
   lineresult = str(first_digit) + str(last_digit)
-  result += int(str(first_digit) + str(last_digit))
+  result += int(lineresult)
 
 print("Solution Part 1: ",result)
 
