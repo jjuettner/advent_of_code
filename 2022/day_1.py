@@ -18,12 +18,9 @@ for elf in elves:
   for item in items:
     elf_sum += int(item.strip())
   elf_calories.append(elf_sum)
-
-  # if elf_sum > max_elf_calories:
-  #   max_elf_calories = elf_sum
 elf_calories = sorted(elf_calories, reverse=True)
 top_three = sum(elf_calories[:3])
 
 # print(input)
-print(max_elf_calories)
-print(top_three)
+print("Max elf calories:",elf_calories[0])
+print("Sum of top three elves:",top_three)
