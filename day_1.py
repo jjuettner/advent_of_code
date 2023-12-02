@@ -1,9 +1,9 @@
 import os
 
 #### F I L E  R E A D   L O G I C ####
-filename = __file__.split("\\")[-1].split(".")[0]
+filename = __file__.split("\\")[-1].split(".")[0] # day_1
 input_file_path = os.path.join(os.path.dirname(__file__), "inputs\\", filename)
-f = open(os.path.join(os.path.dirname(__file__), "inputs\\", filename),"r")
+f = open(input_file_path,"r")
 input = f.readlines()
 
 ######### S O L U T I O N ############
@@ -19,9 +19,25 @@ for line in input:
       last_digit = c
       break
   lineresult = str(first_digit) + str(last_digit)
-  result += int(lineresult)
+  result += int(str(first_digit) + str(last_digit))
 
 print("Solution Part 1: ",result)
+
+
+######### S O L U T I O N ############
+#########   P A R T  1    ############
+######## ( R E W R I T E ) ###########
+
+result = 0
+for line in input:
+  matches = []
+  for c in line: 
+    if c.isdigit():
+        matches.append(c)
+  result += int(str(matches[0])+str(matches[-1]))
+print("Solution 1 (Rewrite)", result)
+
+
 
 ######### S O L U T I O N ############
 #########   P A R T  2    ############
