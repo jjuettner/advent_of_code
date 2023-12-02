@@ -47,17 +47,17 @@ number_words = ["one","two","three","four","five","six","seven","eight","nine"]
 for line in input:
   matches = []
   # iterate over every character in current line
-  for i,c in enumerate(line): 
-    # c: current character | i: index of current character
+  for ci,c in enumerate(line): 
+    # c: current character | ci: index of current character
     # if current character is a digit, add it to the matches array
     if c.isdigit():
       matches.append(c)
     # iterate over number words that could appear in this position
-    for d, word in enumerate(number_words):
-      # word: current number word string we are checking for | d: position of number word in number_words array
+    for wi, word in enumerate(number_words):
+      # word: current number word string we are checking for | wi: index of number word in number_words array
       # if a number word is starting at current position (i), append to the matches array
-      if line[i:].startswith(word):
-        matches.append(d+1) # get the digit from the number word we were checking, "one"(1) is at index 0, so add 1 to the result
+      if line[ci:].startswith(word):
+        matches.append(wi+1) # get the digit from the number word we were checking, "one"(1) is at index 0, so add 1 to the result
   
   # create the two digit number from the first and last match
   # cast to strings to concatenate
