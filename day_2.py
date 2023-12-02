@@ -10,22 +10,14 @@ input = f.readlines()
 ######### S O L U T I O N ############
 #########   P A R T  1    ############
 
-limits = {
-  "red": 12,
-  "green": 13,
-  "blue":14
-}
+limits = {"red": 12,"green": 13,"blue":14}
 
 possible_game_id_sum = 0
 for game in input:
   game_possible = True
   game_id = game.split(":")[0].split(" ")[1]
   rolls = game.split(":")[1].split(";")
-  maxResults = {
-    "red": 0,
-    "green": 0,
-    "blue": 0
-  }
+  maxResults = {"red": 0,"green": 0,"blue": 0}
   for roll in rolls:
     results = roll.split(",")
     for result in results:
@@ -44,8 +36,8 @@ for game in input:
       break
   if game_possible:
     possible_game_id_sum += int(game_id)
-    
-print("Sum of all possible game IDs: ",possible_game_id_sum)
+
+print("Sum of all possible game IDs:",possible_game_id_sum)
 
 
 
@@ -57,11 +49,7 @@ for game in input:
   game_possible = True
   game_id = game.split(":")[0].split(" ")[1]
   rolls = game.split(":")[1].split(";")
-  maxResults = {
-    "red": 0,
-    "green": 0,
-    "blue": 0
-  }
+  maxResults = {"red": 0,"green": 0,"blue": 0}
   for roll in rolls:
     results = roll.split(",")
     for result in results:
@@ -73,7 +61,7 @@ for game in input:
   for colorkey in maxResults:
     game_power *= maxResults[colorkey]
   power_sum += game_power
-print("Combined Game Power",power_sum)
+print("Combined Game Power:",power_sum)
 
 
 

@@ -1,7 +1,7 @@
 import os
 
 #### F I L E  R E A D   L O G I C ####
-filename = __file__.split("\\")[-1].split(".")[0] # day_1
+filename = __file__.split("\\")[-1].split(".")[0] # day_n
 input_file_path = os.path.join(os.path.dirname(__file__), "inputs\\", filename)
 f = open(input_file_path,"r")
 input = f.readlines()
