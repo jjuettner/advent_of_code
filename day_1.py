@@ -1,5 +1,6 @@
 import os
 
+#### F I L E  R E A D   L O G I C ####
 filename = __file__.split("\\")[-1].split(".")[0]
 input_file_path = os.path.join(os.path.dirname(__file__), "inputs\\", filename)
 f = open(os.path.join(os.path.dirname(__file__), "inputs\\", filename),"r")
