@@ -1,4 +1,5 @@
 import os
+import re
 
 #### F I L E  R E A D   L O G I C ####
 filename = __file__.split("\\")[-1].split(".")[0] # day_n
@@ -45,9 +46,9 @@ def checkForAdjacentSymbol(line,start,end):
       endpos = end+1 if len(input[line]) > end else len(input[line])
       search_string = input[search_line][startpos:endpos]
       if search_string.find(symbol) > -1:
-        print("found symbol in line",search_line,search_string)
+        # print("found symbol in line",search_line,search_string)
         return True
-  print("no adjacent symbol found")
+  # print("no adjacent symbol found")
   return False
 
 
@@ -59,8 +60,51 @@ for li,line in enumerate(input):
   for ci,c in enumerate(line):
     if c.isdigit() and not line[ci-1].isdigit(): #first digit after a non-digit
       [number,start,end] = getNumberAndPositionsAtIndex(line,ci)
-      print("found",number,"at",li,":",ci)
+      # print("found",number,"at",li,":",ci)
       found = checkForAdjacentSymbol(li, start,end)
       if found:
         result.append(number)
-print(sum(result))
+print("Solution Part 1",sum(result))
+
+
+######### S O L U T I O N ############
+#########   P A R T  2    ############
+
+def getLinesToSearch(line_no):
+  start = line_no - 1 if line_no > 0 else 0
+  end = line_no + 1 if line_no < len(input) else len(input)
+  return range(start,end+1)
+
+def ranges_overlap(range1, range2):
+    # Assuming each range is a tuple (start, end)
+    start1, end1 = range1
+    start2, end2 = range2
+
+    # Check for overlap
+    return end1 >= start2 and start1 <= end2
+
+def findAdjacentNumbers(line_pos,char_pos):
+  result = []
+  for search_line_pos in getLinesToSearch(line_pos):
+    # match.end() returns the next character, not the last thats still part of the number, therefore subtract 1
+    matches = [(match.start(), match.end()-1) for match in re.finditer(r'\d+', input[search_line_pos])]
+    numbers = [int(match.group()) for match in re.finditer(r'\d+', input[search_line_pos])]
+    # check if any of the matches are next to gear
+    for i,match in enumerate(matches):
+      if ranges_overlap(match,(char_pos-1,char_pos+1)):
+        result.append(numbers[i])
+  return result
+
+
+result = 0
+for li,line in enumerate(input):
+  for ci,c in enumerate(line):
+    if c == "*":
+      adjNumbers = findAdjacentNumbers(li,ci)
+      if len(adjNumbers) == 2:
+        result += int(adjNumbers[0]) * int(adjNumbers[1])
+print("Solution Part 2",result)
+
+      
+
+
