@@ -20,7 +20,6 @@ def getWins(card):
       wins += 1
   return wins
 
-
 result = 0
 for card in input:
   wins = getWins(card)

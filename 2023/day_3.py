@@ -34,8 +34,6 @@ def getNumberAndPositionsAtIndex(line, index):
   # return number, start and end position
   return [int(number),index,end]
 
-
-
 def checkForAdjacentSymbol(line,start,end):
   last_line_index = len(input)-1
   start_line = line-1 if line > 0 else 0
@@ -51,9 +49,6 @@ def checkForAdjacentSymbol(line,start,end):
   # print("no adjacent symbol found")
   return False
 
-
-
-
 result = []
 for li,line in enumerate(input):
   found_number = ""
@@ -65,7 +60,6 @@ for li,line in enumerate(input):
       if found:
         result.append(number)
 print("Solution Part 1",sum(result))
-
 
 ######### S O L U T I O N ############
 #########   P A R T  2    ############
@@ -95,7 +89,6 @@ def findAdjacentNumbers(line_pos,char_pos):
         result.append(numbers[i])
   return result
 
-
 result = 0
 for li,line in enumerate(input):
   for ci,c in enumerate(line):
@@ -104,7 +97,3 @@ for li,line in enumerate(input):
       if len(adjNumbers) == 2:
         result += int(adjNumbers[0]) * int(adjNumbers[1])
 print("Solution Part 2",result)
-
-      
-
-
