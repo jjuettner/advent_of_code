@@ -66,4 +66,4 @@ distance = int("".join(str(dist) for dist in distances))
 w1 = (record_time - math.sqrt((record_time**2 - 4*distance))) / 2
 w2 = (record_time + math.sqrt((record_time**2 - 4*distance))) / 2
 
-print("Solution Part 2",round(w2 - w1 - 1))
+print("Solution Part 2",round(w2 - w1))
